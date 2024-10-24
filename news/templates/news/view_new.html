@@ -4,38 +4,29 @@
 {{ title }} :: {{ block.super }}
 {% endblock %}
 
-
 {% block sidebar %}
 {% include 'inc/_sidebar.html'%}
 {% endblock %}
 
 {% block content %}
-{% for item in news %}
 <div class="card mb-3">
-    <div class="card-header">Category: {{ item.category }}</div>
+    <div class="card-header">Category: <a href="{{ news_item.category.get_absolute_url }}">{{ news_item.category }}</a>
+    </div>
     <div class="card-body">
         <div class="d-flex">
             <div class="flex-shrink-0">
-                {% if item.photo %}
-                <img src="{{ item.photo.url }}" alt="Empty field" width="350" height="200">
+                {% if news_item.photo %}
+                <img src="{{ news_item.photo.url }}" alt="Empty field" width="350" height="200">
                 {% else %}
                 <img src="https://picsum.photos/seed/picsum/350/200" alt="Empty field">
                 {% endif %}
             </div>
             <div class="flex-grow-1 ms-3">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <p class="card-text">{{ item.content|truncatewords:50 }}</p>
-                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+                <h5 class="card-title">{{ news_item.title }}</h5>
+                <p class="card-text">{{ news_item.content }}</p>
             </div>
         </div>
     </div>
 </div>
-{% endfor %}
 {% endblock %}
-
-
-
-
-
-
 

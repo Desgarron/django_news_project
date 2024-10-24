@@ -1,7 +1,6 @@
 from django import template
-from unicodedata import category
-
 from news.models import Category
+
 
 register = template.Library()
 
