@@ -23,6 +23,7 @@ class News(models.Model):
         verbose_name_plural = "News"
         ordering = ["-created_at"]
 
+
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name="Title_category")
 
@@ -36,5 +37,3 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
         ordering = ["title"]
-
-
