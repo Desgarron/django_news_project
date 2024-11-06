@@ -42,7 +42,8 @@ def add_news(request):
     if request.method == "POST":
         form = NewsForm(request.POST)
         if form.is_valid():
-            news = News.objects.create(**form.cleaned_data)
+            # news = News.objects.create(**form.cleaned_data) if form don't connect to model
+            news = form.save()
             print(">>> save news", news)
             return redirect(news)
     else:
